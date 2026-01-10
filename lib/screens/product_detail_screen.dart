@@ -9,7 +9,10 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(product.title)),
+      appBar: AppBar(
+        title: Text(product.title, style: TextStyle(color: Colors.white)),
+        backgroundColor: const Color.fromARGB(255, 243, 50, 240),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
