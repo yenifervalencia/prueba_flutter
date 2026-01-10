@@ -9,7 +9,10 @@ class ProductListScreen extends StatelessWidget {
     final provider = context.watch<ProductProvider>();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Productos')),
+      appBar: AppBar(
+        title: const Text('Productos', style: TextStyle(color: Colors.white)),
+        backgroundColor: const Color.fromARGB(255, 243, 50, 240),
+      ),
       body: NotificationListener<ScrollNotification>(
         onNotification: (scroll) {
           if (scroll.metrics.pixels == scroll.metrics.maxScrollExtent) {
@@ -17,8 +20,11 @@ class ProductListScreen extends StatelessWidget {
           }
           return false;
         },
-        child: ListView.builder(
+        child: ListView.separated(
           itemCount: provider.products.length + 1,
+          separatorBuilder: (context, index) {
+            return const Divider(height: 1, thickness: 1);
+          },
           itemBuilder: (context, index) {
             if (index == provider.products.length) {
               return provider.isLoading
